@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+
+{% block summary %}
+<div class="layout-content">
+  <!-- [ content ] Start -->
+  <div class="container-fluid flex-grow-1 container-p-y">
+
+    <div class="text-muted small mt-0 mb-3 d-block breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="feather icon-home"></i></a></li>
+            <li class="breadcrumb-item"><a href="{% url 'student-list' %}">Student List</a></li>
+            <li class="breadcrumb-item active">Student Form</li>
+        </ol>
+    </div>
+    <div class="card mb-4">
+       <div class="container-fluid flex-grow-1 container-p-y">
+
+<form action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  {% include 'corecode/form_snippet.html' %}
+
+  {% if object %}
+    <input type="submit" class="btn btn-primary" value="Update Record">
+  {% else %}
+    <input type="submit" class="btn btn-primary" value="Add new student">
+  {% endif %}
+</form>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock summary %}

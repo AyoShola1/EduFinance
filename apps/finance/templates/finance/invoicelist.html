@@ -1,0 +1,63 @@
+<!-- templates/invoicelist.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Invoice List</h1>
+
+    <!-- Form for selecting term and year -->
+    <form method="get" action="{% url 'invoice-download' %}">
+        <div class="form-group">
+            <label for="term">Term</label>
+            <select id="term" name="term" class="form-control">
+                {% for term in terms %}
+                    <option value="{{ term.id }}">{{ term.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="session">Session</label>
+            <select id="session" name="session" class="form-control">
+                {% for session in sessions %}
+                    <option value="{{ session.id }}">{{ session.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Download PDF</button>
+    </form>
+
+    <!-- Display the list of invoices -->
+    <table class="table mt-4">
+        <thead>
+        <tr>
+            <th>Student</th>
+            <th>Session</th>
+            <th>Term</th>
+            <th>Class</th>
+            <th>Amount Payable</th>
+            <th>Amount Paid</th>
+            <th>Balance</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for invoice in invoices %}
+            <tr>
+                <td>{{ invoice.student }}</td>
+                <td>{{ invoice.session }}</td>
+                <td>{{ invoice.term }}</td>
+                <td>{{ invoice.class_for }}</td>
+                <td>{{ invoice.total_amount_payable }}</td>
+                <td>{{ invoice.total_amount_paid }}</td>
+                <td>{{ invoice.balance }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

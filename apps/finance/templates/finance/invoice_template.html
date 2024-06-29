@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+
+
+
+
+{% block summary %}
+
+           
+                <!-- [ Layout content ] Start -->
+                <div class="layout-content">
+
+                    <!-- [ content ] Start -->
+                    <div class="container-fluid flex-grow-1 container-p-y">
+                        <h4 class="font-weight-bold py-3 mb-0">Invoices</h4>
+                        <div class="text-muted small mt-0 mb-3 d-block breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#">Invoices List</a></li>
+                                <li class="breadcrumb-item active">Invoice Details
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="row">
+                            <!-- 3rd row Start -->
+                            
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                           
+                                    <div class="card-body">
+                             <div  class="receipt" id="pt">
+<div class="row" >
+  <div class="col-sm-4">
+    <div>
+      <h3>{{ school_name | default:"CEDARS METRO COLLEGE" }} </h3>
+
+      <h6>Akanni Alao St, Tinubu Estate <br> Behind Total Filling Station <br> Adex Bus-stop, Monatan <br>Ibadan</h6>
+      <h6><b>+234-8032268757</b></h6>
+    <hr>
+   
+    </div>
+        <div>
+      <h3>{{ object }} </h3>
+      <h5>{{ object.session }} </h5>
+      <h5>{{ object.term }} </h5>
+      <h5>{{ object.class_for }} </h5>
+      <h6>Status: {{ object.get_status_display }} </h6>
+    <hr>
+    <div>
+      <h4>Expected Balance: <span style="color: red">{{ object.balance | intcomma }} </span></h4>
+    </div>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <table class="table table-sm table-bordered">
+      Invoice Breakdown</br>
+      <thead class="thead-light">
+        <tr>
+          <th>S/N</th>
+          <th>Description</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td>{{ forloop.counter }} </td>
+          <td>{{ item.description }} </td>
+          <td>{{ item.amount }} </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td>Total Amount this term</td>
+          <td>{{ object.amount_payable | intcomma}}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Balance from previous term</td>
+          <td>{{ object.balance_from_previous_term | intcomma }}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Total Amount Payable</td>
+          <td>{{ object.total_amount_payable | intcomma}}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Total Amount Paid</td>
+          <td>{{ object.total_amount_paid | intcomma}}</td>
+        </tr>
+
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+
+<hr>
+<div>
+<h5>Payment History</h5>
+<table class="table table-bordered table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th>S/N</th>
+      <th>Amount Paid</th>
+      <th>Date Paid</th>
+      <th>Comment Paid</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for receipt in receipts %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ receipt.amount_paid}}</td>
+      <td>{{ receipt.date_paid}}</td>
+      <td>{{ receipt.comment}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<br><br><br><br><br><br>
+<div>
+<div class="row"> 
+
+
+<div class="mt-5" style="/* float: right; */padding: 15px;text-align: right;">
+<p style="/* text-align: right; */">------------
+    --------------------</p>
+<h4 style="font-weight: bold; font-size: 14px; ">stamp &amp; signature</h4>
+</div>
+</div>
+</div>
+</div>
+
+                                </div>
+                              </div>
+                            </div>
+                            <!-- 3rd row Start -->
+                        </div>
+                    </div>
+                    <!-- [ content ] End -->
+
+                  
+                </div>
+                <!-- [ Layout content ] Start -->
+{% endblock summary %}
+
+
+
+{% block javascripts %}
+<script type="text/javascript">
+
+    function myfun(pa){
+    var bk = document.body.innerHTML;
+    var dv = document.getElementById(pa).innerHTML;
+        document.body.innerHTML = dv;
+        window.print();
+    }
+
+</script>
+
+{% endblock javascripts %}
+
+
+{% block morejs %}
+<script>
+   $('#invoicetable').DataTable({
+    select: false
+    });
+</script>
+
+{% endblock morejs %}

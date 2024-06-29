@@ -1,0 +1,146 @@
+{% load static %}
+{% load widget_tweaks %}
+
+
+
+<!DOCTYPE html>
+
+<html lang="en" class="material-style layout-fixed">
+
+<head>
+    <title>Bhumlu | B4+ admin template by Srthemesvilla</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Bhumlu Bootstrap admin template made using Bootstrap 4, it has tons of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta name="keywords" content="Bhumlu, bootstrap admin template, bootstrap admin panel, bootstrap 4 admin template, admin template">
+    <meta name="author" content="Srthemesvilla" />
+    <link rel="icon" type="image/x-icon"href="{% static 'assets/img/favicon.ico">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!-- Icon fonts -->
+    <link rel="stylesheet"href="{% static 'assets/fonts/fontawesome.css' %}">
+    <link rel="stylesheet"href="{% static 'assets/fonts/ionicons.css' %}">
+    <link rel="stylesheet"href="{% static 'assets/fonts/linearicons.css' %}">
+    <link rel="stylesheet"href="{% static 'assets/fonts/open-iconic.css' %}">
+    <link rel="stylesheet"href="{% static 'assets/fonts/pe-icon-7-stroke.css' %}">
+    <link rel="stylesheet"href="{% static 'assets/fonts/feather.css' %}">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet"href="{% static 'assets/css/bootstrap-material.css' %}">
+    <link rel="stylesheet"href="{% static 'assets/css/shreerang-material.css' %}">
+    <link rel="stylesheet"href="{% static 'assets/css/uikit.css' %}">
+
+    <!-- Libs -->
+    <link rel="stylesheet"href="{% static 'assets/libs/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <!-- Page -->
+    <link rel="stylesheet"href="{% static 'assets/css/pages/authentication.css' %}">
+</head>
+
+<body>
+    <!-- [ Preloader ] Start -->
+    <div class="page-loader">
+        <div class="bg-primary"></div>
+    </div>
+    <!-- [ Preloader ] End -->
+
+    <!-- [ content ] Start -->
+    <div class="authentication-wrapper authentication-1 px-4">
+        <div class="authentication-inner py-5">
+
+            <!-- [ Logo ] Start -->
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="ui-w-60">
+                    <div class="w-100 position-relative">
+                        <img src="{% static 'assets/img/logo-dark.png" alt="Brand Logo" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            <!-- [ Logo ] End -->
+
+            <!-- [ Form ] Start -->
+
+             <form class="login100-form validate-form my-5" method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <span class="login100-form-title">
+                   {{ school_name }}
+                                </span>
+                <span class="error-msg"> 
+                    {% if form.errors %}
+                    <p class="error-msg">Your username and password didn't match. Please try again.</p>
+                    {% endif %}
+            
+                    {% if next %}
+                    {% if user.is_authenticated %}
+                    <p class="error-msg"> Your account doesn't have access to this page. To proceed,
+                      please login with an account that has access.</p>
+                    {% else %}
+                    </span>
+                   
+                    {% endif %}
+                    {% endif %}
+                </span>
+                <div class="wrap-input100 validate-input form-group" data-validate="Valid email is required: ex@abc.xyz">
+                  <label class="form-label">Username</label>
+                    <input class="form-control" id="id_username" name="username" 
+                    type="text" placeholder="Username">
+                    <span class="focus-input100"></span>
+                    
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                  <label class="form-label"> Password </label>
+                    <input class="form-control" type="password" id="id_password" name="password" placeholder="Password">
+                    <span class="focus-input100"></span>
+                   
+                </div>
+                
+                <div class="container-login100-form-btn">
+                    <button class="btn btn-primary" type="submit" value="Login">
+                        Login
+                    </button>
+                    <input type="hidden" name="next" value="{{ next }}">
+
+                </div>
+
+                <div class="text-center p-t-12">
+                    <span class="txt1">
+                        Forgot
+                    </span>
+                    <a class="txt2"href="{% static '#">
+                        Username / Password?
+                    </a>
+                </div>
+              </form>
+      \
+            <!-- [ Form ] End -->
+
+            <div class="text-center text-muted">
+                Don't have an account yet?
+                <a href="">Sign Up</a>
+            </div>
+
+        </div>
+    </div>
+    <!-- [ content ] End -->
+
+    <!-- Core scripts -->
+    <script src="{% static 'assets/js/pace.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/libs/popper/popper.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.js' %}"></script>
+    <script src="{% static 'assets/js/sidenav.js' %}"></script>
+    <script src="{% static 'assets/js/layout-helpers.js' %}"></script>
+    <script src="{% static 'assets/js/material-ripple.js' %}"></script>
+
+    <!-- Libs -->
+    <script src="{% static 'assets/libs/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+
+    <!-- Demo -->
+    <script src="{% static 'assets/js/demo.js' %}"></script><script src="{% static 'assets/js/analytics.js' %}"></script>
+</body>
+
+</html>

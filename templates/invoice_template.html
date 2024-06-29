@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Invoice Detail</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h3>Invoice Detail</h3>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Student:</strong> {{ invoice.student }}</li>
+                    <li class="list-group-item"><strong>Session:</strong> {{ invoice.session }}</li>
+                    <li class="list-group-item"><strong>Term:</strong> {{ invoice.term }}</li>
+                    <li class="list-group-item"><strong>Class:</strong> {{ invoice.class_for }}</li>
+                    <li class="list-group-item"><strong>Balance from Previous Term:</strong> {{ invoice.balance_from_previous_term }}</li>
+                    <li class="list-group-item"><strong>Status:</strong> {{ invoice.get_status_display }}</li>
+                </ul>
+                <a href="{% url 'send-invoice-email' invoice.id %}" class="btn btn-primary mt-3">Send Invoice as Email</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

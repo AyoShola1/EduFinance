@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+
+
+
+
+{% block summary %}
+
+           
+                <!-- [ Layout content ] Start -->
+                <div class="layout-content">
+
+                    <!-- [ content ] Start -->
+                    <div class="container-fluid flex-grow-1 container-p-y">
+                        <h4 class="font-weight-bold py-3 mb-0">Invoices</h4>
+                        <div class="text-muted small mt-0 mb-3 d-block breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#">Invoices List</a></li>
+                                <li class="breadcrumb-item active">Invoice Details
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="row">
+                            <!-- 3rd row Start -->
+                            
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                         
+                                    <div class="card-body">
+                             <div  class="receipt" id="pt">
+<div class="row" >
+
+  <div class="col-sm-8">
+
+<p>Email already sent!</p>
+</div>
+
+                                </div>
+                              </div>
+                            </div>
+                            <!-- 3rd row Start -->
+                        </div>
+                    </div>
+                    <!-- [ content ] End -->
+
+                  
+                </div>
+                <!-- [ Layout content ] Start -->
+{% endblock summary %}
+
+
+
+{% block javascripts %}
+<script type="text/javascript">
+
+    function myfun(pa){
+    var bk = document.body.innerHTML;
+    var dv = document.getElementById(pa).innerHTML;
+        document.body.innerHTML = dv;
+        window.print();
+    }
+
+</script>
+
+{% endblock javascripts %}
+
+
+{% block morejs %}
+<script>
+   $('#invoicetable').DataTable({
+    select: false
+    });
+</script>
+
+{% endblock morejs %}

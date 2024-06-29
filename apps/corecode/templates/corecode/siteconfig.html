@@ -1,0 +1,95 @@
+
+
+
+
+{% extends 'base.html' %}
+{% load humanize %}
+{% load widget_tweaks %}
+
+
+
+
+
+
+{% block summary %}
+
+           
+                <!-- [ Layout content ] Start -->
+                <div class="layout-content">
+
+                    <!-- [ content ] Start -->
+                    <div class="container-fluid flex-grow-1 container-p-y">
+                        <h4 class="font-weight-bold py-3 mb-0">Site Configuration</h4>
+                        <div class="text-muted small mt-0 mb-3 d-block breadcrumb">
+                        
+                        </div>
+
+                    
+                        <div class="row">
+                            <!-- 3rd row Start -->
+                            
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header with-elements pb-0">
+                                        
+                                    
+                                    </div>
+                                    <div class="card-body">
+
+                                       <div class="col-sm-12">
+                               <form method="POST">
+                                  {% csrf_token %}
+                                  {{ formset.management_form}}
+
+                                  <div class="mb-3">
+                                    {% for form in formset %}
+                                    <div class="form-group row">
+                                      {{ form.id }}
+                                      <div class="col-2">{{ form.key.value}}</div>
+                                      <div class="col-6">{{ form.value | add_class:"form-control" | attr:"required"}}</div>
+
+                                      {% if form.errors %}
+
+                                      {% endif %}
+
+                                    </div>
+                                    {% endfor %}
+                                  </div>
+
+
+                                  <input type="submit" value="Save" class="w-25 btn btn-primary">
+
+                                </form>
+
+                                      </div>
+                       
+                                </div>
+                              </div>
+                            </div>
+                            <!-- 3rd row Start -->
+                        </div>
+                    </div>
+                    <!-- [ content ] End -->
+
+
+                   
+
+                    <!-- [ Layout footer ] Start -->
+                    <nav class="layout-footer footer bg-white">
+                        <div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
+                            <div class="pt-3">
+                                <span class="footer-text font-weight-semibold">&copy; <a href="https://srthemesvilla.com" class="footer-link" target="_blank">Srthemesvilla</a></span>
+                            </div>
+                            <div>
+                                <a href="javascript:" class="footer-link pt-3">About Us</a>
+                                <a href="javascript:" class="footer-link pt-3 ml-4">Help</a>
+                                <a href="javascript:" class="footer-link pt-3 ml-4">Contact</a>
+                                <a href="javascript:" class="footer-link pt-3 ml-4">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- [ Layout footer ] End -->
+                </div>
+                <!-- [ Layout content ] Start -->
+{% endblock summary %}
+
